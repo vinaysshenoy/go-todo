@@ -7,6 +7,14 @@ import (
 
 func main() {
 	// Initialize a new Fiber app
+    app := Setup()
+
+    // Start the server on port 3000
+    log.Fatal(app.Listen(":3000"))
+}
+
+func Setup() *fiber.App {
+	// Initialize a new Fiber app
     app := fiber.New()
 
     // Define a route for the GET method on the root path '/'
@@ -15,6 +23,5 @@ func main() {
         return c.SendString("Hello, World 👋!")
     })
 
-    // Start the server on port 3000
-    log.Fatal(app.Listen(":3000"))
+	return app
 }
